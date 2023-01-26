@@ -1,5 +1,5 @@
 # vite-redux-json
-vite-react-redux (CRUD)
+Create, Update and Delete (CRUD)
 
 React with Vite Framework
 - Redux Toolkit
