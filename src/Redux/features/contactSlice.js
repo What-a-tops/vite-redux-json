@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
 import axios from 'axios';
-import { v4 as uuidv4 } from 'uuid';
 
 const url = import.meta.env.VITE_REACT_APP_API
 
@@ -22,13 +21,11 @@ const contactSlice = createSlice({
             state.datas.push(action.payload)
         },
         contactDeleted: (state, action) => {
-            // state.datas.pop(action.payload)
             state.datas = state.datas.filter(
                 (item) => item.id !== action.payload
             )
         },
         contactEdited: (state, action) => {
-            // state.datas.push(action.payload)
             state.data = state.data.map((item) => 
                 item.id === action.payload.id ? action.payload : item
             )
@@ -48,7 +45,7 @@ export const loadContacts = () => async dispatch => {
 export const loadContact = id => async dispatch => {
     try {
         const response = await axios.get(`${url}/${id}`)
-        dispatch(getContacts(response.data))
+        dispatch(getContact(response.data))
     } catch (err) {
         throw new Error(err)
     }  

@@ -6,6 +6,7 @@ import Navbar from './Pages/Navbar';
 import Home from "./Pages/Home"
 import PageNotFound from "./Pages/PageNotFound"
 import ViewContact from './Pages/ViewContact';
+import Footer from './Pages/Footer';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route exact path="/view/:id" element={<ViewContact />}></Route>
         <Route path='*' element={<PageNotFound />} />
       </Routes>
+      <Footer />
     </div>
   )
 }

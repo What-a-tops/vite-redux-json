@@ -31,7 +31,8 @@ const AddEdit = (props) => {
                     inputProps={{type: 'address', placeholder: 'Enter Address'}}
                 />
                 <Button 
-                    color="bg-indigo"
+                    isHidden=''
+                    color="bg-gray"
                     onClick={props.handleAddEditUser}>{props.submit}</Button>  
 
                 <Button 

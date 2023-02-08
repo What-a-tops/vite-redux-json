@@ -11,7 +11,7 @@ const ViewContact = () => {
 
     const contacts = useSelector(state => state.contacts)
 
-    const {name, email, contact, address} = contacts.datas
+    const {name, email, contact, address} = contacts.data
 
     useEffect(() => {
         dispatch(loadContact(id))
@@ -36,7 +36,11 @@ const ViewContact = () => {
                     <span>{address}</span>
                 </div>
             </div>
-            <Button onClick={() => (navigate('/'))} color="bg-red">Back</Button>
+            <Button 
+                isHidden=''
+                onClick={() => (navigate('/'))} 
+                color="bg-red"
+            >Back</Button>
         </div>
             
     </div>

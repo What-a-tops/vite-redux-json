@@ -9,7 +9,7 @@ const ContactList = (props) => {
             <div className="py-1 inline-block min-w-full sm:px-6 lg:px-8">
               <div className="overflow-hidden">
                 <table className="min-w-full text-center border shadow-sm">
-                  <thead className="border-b text-center bg-gray-700">
+                  <thead className="border-b text-center dark:bg-gray-800">
                     <tr>
                       <th scope="col" className="text-sm font-light text-white px-6 py-4">
                         #
