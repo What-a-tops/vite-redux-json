@@ -1,3 +1,4 @@
+import React, { Suspense, lazy } from 'react'
 import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -8,16 +9,24 @@ import PageNotFound from "./Pages/PageNotFound"
 import ViewContact from './Pages/ViewContact';
 import Footer from './Pages/Footer';
 
-function App() {
+// const Navbar = lazy(() => import('./Pages/Navbar'))
+// const Home = lazy(() => import('./Pages/Home'))
+// const PageNotFound = lazy(() => import('./Pages/PageNotFound'))
+// const ViewContact = lazy(() => import('./Pages/ViewContact'))
+// const Footer = lazy(() => import('./Pages/Footer'))
+
+const App = () => {
   return (
     <div className="App">
       <ToastContainer position="top-center" />
-      <Navbar />
-      <Routes>
-        <Route exact path='/' element={<Home />} />
-        <Route exact path="/view/:id" element={<ViewContact />}></Route>
-        <Route path='*' element={<PageNotFound />} />
-      </Routes>
+        {/* <Suspense fallback={<div>Loading...</div>}> */}
+            <Navbar />
+            <Routes>
+              <Route exact path='/' element={<Home />} />
+              <Route exact path="/view/:id" element={<ViewContact />}></Route>
+              <Route path='*' element={<PageNotFound />} />
+            </Routes>
+        {/* </Suspense> */}
       <Footer />
     </div>
   )

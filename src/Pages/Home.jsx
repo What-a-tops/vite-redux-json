@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, Suspense, lazy} from 'react'
 import {useNavigate} from 'react-router-dom'
 
 import { useDispatch, useSelector } from "react-redux"
@@ -6,8 +6,11 @@ import { loadContacts, addContact, deleteContact, editContact } from '../Redux/f
 import { v4 as uuidv4 } from 'uuid';
 import { toast } from "react-toastify";
 
-import AddEdit from '../Component/AddEdit'
-import ContactList from '../Component/ContactList'
+// import AddEdit from '../Component/AddEdit'
+// import ContactList from '../Component/ContactList'
+
+const AddEdit = lazy(() => import('../Component/AddEdit'))
+const ContactList = lazy(() => import('../Component/ContactList'))
 
 const Home = () => {
     const [submit, setSubmit] = useState('Save')
@@ -73,24 +76,26 @@ const Home = () => {
         <main className='flex justify-center items-center'>
             <div className="container mx-auto px-4">
                 <div className="flex flex-row space-x-4">
-                    <div className="w-1/4">
-                        <AddEdit
-                        clear={clear}  
-                        submit={submit}
-                        values={values}
-                        setValues={setValues}
-                        handleSubmit={handleSubmit}
-                        handleClear={handleClear}
-                        />
-                    </div>
-                    <div className="w-3/4">
-                        <ContactList
-                            contacts={contacts.datas}
-                            handleDelete={handleDelete}
-                            handleEdit={handleEdit}
-                            handleView={handleView}
-                        />
-                    </div>
+                    <Suspense fallback={<div>Loading...</div>}>
+                        <div className="w-1/4">
+                            <AddEdit
+                                clear={clear}  
+                                submit={submit}
+                                values={values}
+                                setValues={setValues}
+                                handleSubmit={handleSubmit}
+                                handleClear={handleClear}
+                            />
+                        </div>
+                        <div className="w-3/4">
+                            <ContactList
+                                contacts={contacts.datas}
+                                handleDelete={handleDelete}
+                                handleEdit={handleEdit}
+                                handleView={handleView}
+                            />
+                        </div>
+                    </Suspense>
                 </div>
             </div>
         </main>
