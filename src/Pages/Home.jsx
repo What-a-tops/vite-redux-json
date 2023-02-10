@@ -25,11 +25,14 @@ const Home = () => {
     })
     const { id, name, email, contact, address } = values
 
-    const handleAddEditUser = () => {
-        if (!name || !email || !contact || !address) {
-            toast.error("Please provide value into each input field");
-        } else {
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        // if (!name || !email || !contact || !address) {
+        //     toast.error("Please provide value into each input field");
+        // } else {
             setValues({name: '',email: '', contact:'', address:''})
+            setClear(true)
+            setSubmit('Save')
             if (!id) {
                 dispatch(addContact({...values, id: uuidv4()}))
                 toast.success("Contact Addedd Successfully")
@@ -37,7 +40,7 @@ const Home = () => {
                 dispatch(editContact(values, id))
                 toast.success("Contact Updated Successfully")
             }
-        }
+        // }
     }
 
     useEffect(() => {
@@ -63,7 +66,8 @@ const Home = () => {
         navigate(`/view/${id}`)
     }
 
-    const handleClear = () => {
+    const handleClear = (e) => {
+        e.preventDefault()
         setClear(true)
         setSubmit('Save')
         setValues({name: '',email: '', contact:'', address:''})
@@ -79,7 +83,7 @@ const Home = () => {
                         submit={submit}
                         values={values}
                         setValues={setValues}
-                        handleAddEditUser={handleAddEditUser}
+                        handleSubmit={handleSubmit}
                         handleClear={handleClear}
                         />
                     </div>

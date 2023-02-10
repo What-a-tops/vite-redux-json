@@ -21,6 +21,7 @@ const contactSlice = createSlice({
             state.datas.push(action.payload)
         },
         contactDeleted: (state, action) => {
+            console.log(1)
             state.datas = state.datas.filter(
                 (item) => item.id !== action.payload
             )
@@ -64,6 +65,7 @@ export const deleteContact = id => async dispatch => {
     try {
         await axios.delete(`${url}/${id}`)
         dispatch(contactDeleted())
+        dispatch(loadContacts())
     } catch (err) {
         throw new Error(err)
     }

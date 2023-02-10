@@ -40,6 +40,7 @@ const ViewContact = () => {
                 isHidden=''
                 onClick={() => (navigate('/'))} 
                 color="bg-red"
+                type="button"
             >Back</Button>
         </div>
             

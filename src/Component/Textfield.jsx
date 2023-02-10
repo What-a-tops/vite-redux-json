@@ -1,6 +1,6 @@
 import React from 'react'
 
-const TextField = ({label, inputProps, onChange, value}) => {
+const TextField = ({type, label, inputProps, onChange, value, pattern}) => {
 return (
     <div>
         <div className='flex flex-col'>
@@ -8,9 +8,12 @@ return (
         </div>
         <input
             className=' py-2 px-3 p-3 w-full font-light shadow-sm rounded mb- border'
+            type={type}
             {...inputProps}
             onChange={onChange}
             value={value}
+            pattern={pattern}
+            required
         />
     </div>
     )
