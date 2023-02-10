@@ -27,20 +27,16 @@ const Home = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        // if (!name || !email || !contact || !address) {
-        //     toast.error("Please provide value into each input field");
-        // } else {
             setValues({name: '',email: '', contact:'', address:''})
             setClear(true)
             setSubmit('Save')
             if (!id) {
                 dispatch(addContact({...values, id: uuidv4()}))
-                toast.success("Contact Addedd Successfully")
+                toast.success("Contact Added Successfully")
             } else {
                 dispatch(editContact(values, id))
                 toast.success("Contact Updated Successfully")
             }
-        // }
     }
 
     useEffect(() => {
@@ -74,7 +70,7 @@ const Home = () => {
     }
 
     return (
-        <main>
+        <main className='flex justify-center items-center'>
             <div className="container mx-auto px-4">
                 <div className="flex flex-row space-x-4">
                     <div className="w-1/4">
