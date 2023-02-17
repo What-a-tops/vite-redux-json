@@ -16,6 +16,7 @@ const AddEdit = (props) => {
                         inputProps={{type: 'text', placeholder: 'Enter Name'}}
                         autofocus="autofocus"
                         pattern="[a-zA-Z ]+"
+                        // ref={(element) => element?.focus?.()}
                     />
                     <TextField 
                         type="email"
@@ -39,6 +40,7 @@ const AddEdit = (props) => {
                         value={values.address}
                         onChange={(e) => setValues({...values, address: e.target.value})}
                         inputProps={{type: 'address', placeholder: 'Enter Address'}}
+                        pattern="[a-z0-9.- ]$"
                     />
                     <Button 
                         isHidden=""
