@@ -63,7 +63,7 @@ const Home = () => {
     }
 
     const handleView = (id) => {
-        navigate(`/view/${id}`)
+        navigate(`/${id}`)
     }
 
     const handleClear = (e) => {

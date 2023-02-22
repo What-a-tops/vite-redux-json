@@ -23,7 +23,7 @@ const App = () => {
             <Navbar />
             <Routes>
               <Route exact path='/' element={<Home />} />
-              <Route exact path="/view/:id" element={<ViewContact />}></Route>
+              <Route exact path="/:id" element={<ViewContact />}></Route>
               <Route path='*' element={<PageNotFound />} />
             </Routes>
         {/* </Suspense> */}
