@@ -43,7 +43,7 @@ export const loadContacts = () => async dispatch => {
     }   
 }
 
-export const loadContact = id => async dispatch => {
+export const loadContact = (id) => async dispatch => {
     try {
         const response = await axios.get(`${url}/${id}`)
         dispatch(getContact(response.data))
