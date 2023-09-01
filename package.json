@@ -8,7 +8,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "server": "json-server --watch db.json --port 5002",
+    "server": "npx json-server --watch public/db.json --port 5002",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
