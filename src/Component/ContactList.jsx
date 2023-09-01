@@ -6,8 +6,8 @@ const ContactList = (props) => {
     <div className='container mx-auto py-5'>
       <div className='bg-white p-5 w-full rounded-lg shadow mx-auto'>
         <div className="flex flex-col">
-          <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
-            <div className="py-1 inline-block min-w-full sm:px-6 lg:px-8">
+          {/* <div className="overflow-x-auto sm:-mx-6 lg:-mx-8"> */}
+            {/* <div className="py-1 inline-block min-w-full sm:px-6 lg:px-8"> */}
               <div className="overflow-hidden">
                 <table className="min-w-full text-sm table-auto md:table-fixed text-center border shadow-sm">
                   <thead className="border-b text-center dark:bg-gray-800">
@@ -97,8 +97,8 @@ const ContactList = (props) => {
                   </tbody>
                 </table>
               </div>
-            </div>
-          </div>
+            {/* </div> */}
+          {/* </div> */}
         </div>
       </div>
     </div>
