@@ -18,7 +18,7 @@ const ViewContact = () => {
     }, [dispatch, id])
 
     return (
-        <div className='grid mt-20 place-items-center'>
+        <div className='grid mt-5 place-items-center'>
             <div className="rounded-3xl overflow-hidden shadow-xl max-w-xs bg-white">
                 <img src="https://i.imgur.com/dYcYQ7E.png" className="w-full" />
             <div className="flex justify-center -mt-8">
