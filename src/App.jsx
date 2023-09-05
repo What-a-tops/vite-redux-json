@@ -22,7 +22,7 @@ const App = () => {
         {/* <Suspense fallback={<div>Loading...</div>}> */}
             <Navbar />
             <Routes>
-              <Route exact path='/' element={<Home />} />
+              <Route exact path='/vite-redux-json/' element={<Home />} />
               <Route exact path="/:id" element={<ViewContact />}></Route>
               <Route path='*' element={<PageNotFound />} />
             </Routes>
