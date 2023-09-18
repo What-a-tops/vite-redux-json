@@ -1,13 +1,10 @@
 import React, {useEffect, useState, Suspense, lazy} from 'react'
 import {useNavigate} from 'react-router-dom'
-
 import { useDispatch, useSelector } from "react-redux"
 import { loadContacts, addContact, deleteContact, editContact } from '../Redux/features/contactSlice'
 import { v4 as uuidv4 } from 'uuid';
 import { toast } from "react-toastify";
-
-// import AddEdit from '../Component/AddEdit'
-// import ContactList from '../Component/ContactList'
+import Validation from "../Component/Validation.jsx";
 
 const AddEdit = lazy(() => import('../Component/AddEdit'))
 const ContactList = lazy(() => import('../Component/ContactList'))
@@ -19,33 +16,52 @@ const Home = () => {
     const dispatch = useDispatch()
 
     const contacts = useSelector((state) => state.contacts)
-    const [values, setValues] = useState({
+
+    const initialValues = {
         id: '',
         name: '',
         email: '',
         contact:'',
         address:''
-    })
+    }
+
+    const [values, setValues] = useState(initialValues)
+    const [errors, setErrors] = useState({})
+    const [isSubmit, setIsSubmit] = useState(false)
 
     const { id, name, email, contact, address } = values
 
+    const handleChange = (e) => {
+        setClear(false)
+        const {name, value} = e.target;
+        setValues({...values, [name]: value})
+    };
+
     const handleSubmit = (e) => {
-        e.preventDefault()
-            setValues({name: '',email: '', contact:'', address:''})
-            setClear(true)
-            setSubmit('Save')
-            if (!id) {
-                dispatch(addContact({...values, id: uuidv4()}))
-                toast.success("Contact Added Successfully")
-            } else {
-                dispatch(editContact(values, id))
-                toast.success("Contact Updated Successfully")
-            }
+        e.preventDefault();
+        setErrors(Validation(values))
+        setIsSubmit(true)
+    };
+
+    const submitForms = () => {
+        setValues(initialValues)
+        setClear(true)
+        setSubmit('Save')
+        if (!id) {
+            dispatch(addContact({...values, id: uuidv4()}))
+            toast.success("Contact Added Successfully")
+        } else {
+            dispatch(editContact(values, id))
+            toast.success("Contact Updated Successfully")
+        }
     }
 
     useEffect(() => {
+        if (Object.keys(errors).length === 0 && isSubmit) {
+            submitForms()
+        }
         dispatch(loadContacts())
-    }, [dispatch])  
+    }, [dispatch, errors])
 
     const handleDelete = (id) => {
         if (
@@ -70,7 +86,7 @@ const Home = () => {
         e.preventDefault()
         setClear(true)
         setSubmit('Save')
-        setValues({name: '',email: '', contact:'', address:''})
+        setValues(initialValues)
     }
 
     return (
@@ -90,6 +106,8 @@ const Home = () => {
                                     setValues={setValues}
                                     handleSubmit={handleSubmit}
                                     handleClear={handleClear}
+                                    handleChange={handleChange}
+                                    errors={errors}
                                 />
                             </div>
                             <div className="w-3/4">

@@ -27,7 +27,6 @@ const contactSlice = createSlice({
             state.datas.push(action.payload)
         },
         contactDeleted: (state, action) => {
-            console.log(1)
             state.datas = state.datas.filter(
                 (item) => item.id !== action.payload
             )
