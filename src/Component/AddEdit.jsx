@@ -2,7 +2,7 @@ import Button from './Button'
 import TextField from './Textfield'
 
 const AddEdit = (props) => {
-    const {values, submit, clear, handleClear, handleSubmit, handleChange, setValues, errors} = props
+    const {values, submit, clear, handleClear, handleSubmit, handleChange, errors} = props
 
     return (
         <div className='container mx-auto py-5'>

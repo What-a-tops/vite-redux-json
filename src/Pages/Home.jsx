@@ -29,7 +29,7 @@ const Home = () => {
     const [errors, setErrors] = useState({})
     const [isSubmit, setIsSubmit] = useState(false)
 
-    const { id, name, email, contact, address } = values
+    const { id } = values
 
     const handleChange = (e) => {
         setClear(false)
@@ -47,6 +47,7 @@ const Home = () => {
         setValues(initialValues)
         setClear(true)
         setSubmit('Save')
+        setIsSubmit(false)
         if (!id) {
             dispatch(addContact({...values, id: uuidv4()}))
             toast.success("Contact Added Successfully")
@@ -87,6 +88,7 @@ const Home = () => {
         setClear(true)
         setSubmit('Save')
         setValues(initialValues)
+        setErrors({})
     }
 
     return (
